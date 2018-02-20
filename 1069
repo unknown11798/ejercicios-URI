@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class diamantes {
+    public static void main(String[]args){
+        Scanner leer=new Scanner(System.in);
+        int n,tamanio,contador,temporal;
+        String linea;
+        n=leer.nextInt();
+        for(int i=0;i<n;i++){
+            linea=leer.nextLine();
+            tamanio=linea.length();
+            contador=0;
+            temporal=0;
+            for(int j=0;j<tamanio;j++){
+                if(linea.charAt(j)=='<'){
+                    temporal++;
+                }else if(linea.charAt(j)=='>'&&temporal!=0){
+                    contador++;
+                    temporal--;
+                }
+            }
+            System.out.println(contador);
+        }
+    }
+}
