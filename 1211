@@ -1,0 +1,43 @@
+import java.io.*;
+public class exercise {
+    public static void print(int [][]num){
+        for(int i=0;i<num.length;i++){
+            for(int j=0;j<num[0].length;j++){
+                System.out.println(num[i][j]);
+            }
+        }
+    }
+    public static void main(String[]args) throws IOException{
+        BufferedReader a=new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter b=new BufferedWriter(new OutputStreamWriter(System.out));
+        try{
+            String ent=a.readLine();
+            int cases;
+            int[][] num;
+            while(!ent.equals("")&&!ent.equals("0")){
+                cases=Integer.parseInt(ent);
+                ent=a.readLine();
+                num=new int[cases][ent.length()];
+                for(int j=0;j<ent.length();j++){
+                    num[0][j]=Integer.parseInt(ent.substring(j,j+1));
+                }for(int i=0;i<cases;i++){
+                    ent=a.readLine();
+                    for(int j=0;j<ent.length();j++){
+                    num[0][j]=Integer.parseInt(ent.substring(j,j+1));
+                    }ent=a.readLine();
+                }int cont=0;
+                
+                for(int i=0;i<cases;i++){
+                    for(int j=0;j<ent.length();j++){
+                        if(num[i][j]==num[i-1][j]){
+                            cont++;
+                        }else
+                            break;
+                    }
+                }print(num);
+            }
+        }catch(IOException ex){
+            
+        }
+    }
+}
