@@ -1,0 +1,44 @@
+//Corregir Demora de Ejecucion
+import java.util.*;
+public class exercise {
+  public static void main(String[]args){
+    Scanner read=new Scanner(System.in);
+    int maximo=0,ultimo,indice,temp;
+    int longitud1=read.nextInt();
+    int longitud2=read.nextInt();
+    int[] entrada=new int[longitud1];
+    int[] salida=new int[longitud2];
+    for(int i=0;i<longitud1;i++){
+      entrada[i]=read.nextInt(i);
+      if(maximo<entrada[i])
+        maximo=entrada[i];
+    }
+    salida[0]=maximo;
+    indice=longitud1;
+    while(indice<longitud2){
+      temp=read.nextInt();
+      if(maximo==entrada[indice%longitud1]){
+        entrada[indice%longitud1]=temp;
+        maximo=entrada[indice%longitud1];
+        for(int i=0;i<longitud1;i++){
+          if(maximo<entrada[i]){
+            maximo=entrada[i];
+          }
+        }
+      }else{
+        entrada[indice%longitud1]=temp;
+      }
+      if(temp>maximo){
+        maximo=temp;
+      }
+      salida[indice-longitud1+1]=maximo;
+      indice++;
+    }
+    indice=0;
+    ultimo=longitud2-longitud1+1;
+    while(indice<ultimo){
+      System.out.println(salida[indice]);
+      indice++;
+    }
+  }
+}
